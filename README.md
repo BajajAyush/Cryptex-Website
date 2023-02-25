@@ -1,6 +1,6 @@
 <p align="center">
 <img width="400" src="/static/logo_banner.png"><br>
-<h1 align="center"> Cryptex Cryptic Hunt</h1></p>
+<h1 align="center">Cryptic Hunt</h1></p>
 
 ## Run Locally
 
