@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Leaderboard{% endblock %}
+{% block head %}
+<style>
+th{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+#row{
+    border: solid 1px #00d2d2;
+    outline: solid 1px #00d2d2;
+    transition: all 0.3s;
+}
+td{
+    padding: 10px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="justify-center">
+    <div class="rounded lg:w-1/3 md:w-1/2 w-[98%] p-5 mt-16 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 bg-color-nblue-700 border border-nblue mb-10" style="background-color: rgba(0, 42, 42, .6);"><i><p tabindex="0" class="text-nblue focus:outline-none text-2xl font-extrabold leading-6">
+        <span class="text-2xl">Leaderboard</span></i>
+    </div>
+    <div class="rounded lg:w-1/2 md:w-1/2 w-[98%] p-5 mt-16 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 bg-color-nblue-700 border border-nblue mb-10" style="background-color: rgba(0, 42, 42, .6);"><p tabindex="0" class="text-nblue focus:outline-none text-2xl font-extrabold leading-6">
+        {% if rank != 'unauthorised' %}<span class="text-2xl">Your Rank: {{rank}}</span>{% endif %}
+        <table class="table-auto w-full border-separate border-spacing-y-5">
+            <thead class="border border-nblue" style="border-bottom: 1px solid #00d2d2;">
+                <tr class="p-3">
+                    <th class="border border-nblue text-left text-xl font-bold leading-6 text-nblue">Rank</th>
+                    <th class="border border-nblue text-left text-xl font-bold leading-6 text-nblue">User</th>
+                    <th class="border border-nblue text-left text-xl font-bold leading-6 text-nblue">Score</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for user in staff %}
+                <tr class="border-spacing-y-10 border-spacing-x-0 hover:scale-110 hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-xl hover:bg-opacity-80 hover:bg-color-nblue-700" id="row">
+                    <td class="text-left text-xl leading-6 text-nblue"><span data-tooltip-target="tooltip" data-tooltip-placement="left"><img src="{% static 'logo.png' %}" class="inline w-9"></span></td>
+                    <div id="tooltip" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-nblue bg-nblue-800 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        Staff
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <td class="text-left text-xl leading-6 text-nblue"><a href="{% url 'public-profile' username=user%}"><img src="{{ user.avatar_url }}" class="inline w-9 rounded border border-nblue mr-5">{{ user|truncatechars:15 }}</a></td>
+                    <td class="text-left text-xl leading-6 text-nblue">{{ user.score }}</td>
+                </tr>
+                {% endfor %}
+                {% for user in players %}
+                <tr class="border-spacing-y-10 border-spacing-x-0 hover:scale-110 hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-xl hover:bg-opacity-80 hover:bg-color-nblue-700" id="row">
+                    <td class="text-left text-xl leading-6 text-nblue">{% if forloop.counter == 1 %}🥇{% elif forloop.counter == 2 %}🥈{% elif forloop.counter == 3 %}🥉{% else %}{{ forloop.counter }}{% endif %}</td>
+                    <td class="text-left text-xl leading-6 text-nblue"><a href="{% url 'public-profile' username=user%}"><img src="{{ user.avatar_url }}" class="inline w-9 rounded border border-nblue mr-5">{{ user|truncatechars:15 }}</a></td>
+                    <td class="text-left text-xl leading-6 text-nblue">{{ user.score }}</td>
+                </tr>
+                {% endfor %}
+                {% if banned %}
+                {% for user in banned %}
+                <tr class="border-spacing-y-10 border-spacing-x-0 hover:scale-110 hover:bg-clip-padding hover:backdrop-filter hover:backdrop-blur-xl hover:bg-opacity-80 hover:bg-color-nblue-700" id="row">
+                    <td class="text-left text-xl leading-6 text-nblue"><span data-tooltip-target="disqualified" data-tooltip-placement="left">☠</span></td>
+                    <div id="disqualified" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-nblue bg-nblue-800 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip">
+                        Disqualified
+                        <div class="tooltip-arrow" data-popper-arrow></div>
+                    </div>
+                    <td class="text-left text-xl leading-6 text-nblue"><img src="{{ user.avatar_url }}" class="inline w-9 rounded border border-nblue mr-5">{{ user|truncatechars:15 }}</td>
+                    <td class="text-left text-xl leading-6 text-nblue">☠</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

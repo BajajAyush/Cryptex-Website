@@ -1,0 +1,219 @@
+{% load static %}
+{% load pwa %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block head_title %}{% endblock %} |  Cryptex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="content-language" content="en-IN">
+    <meta name="title" content="Cryptex">
+    <meta name="description" content="Cryptex is an online quiz that will challenge your knowledge, problem-solving skills, and how good you can Google. So, get ready to flex your brain muscles and embark on a journey filled with riddles and questions from all genres imaginable.">
+    <meta name="keywords" content="cryptic hunt, hunt, cryptic, steg, quizzing, quizzinga">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="author" content="BajajAyush">
+    <meta name="theme-color" content="#00d2d2">
+    <meta property="og:title" content="Cryptex">
+    <meta property="og:description" content="Cryptex is an online quiz that will challenge your knowledge, problem-solving skills, and how good you can Google. So, get ready to flex your brain muscles and embark on a journey filled with riddles and questions from all genres imaginable.">
+    <meta property="og:image" content="/icons/maskable_icon_x192.png"/>
+
+
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}"/>
+    {% progressive_web_app_meta %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'nblue': {  DEFAULT: '#00D2D2',  '50': '#8BFFFF',  '100': '#76FFFF',  '200': '#4DFFFF',  '300': '#25FFFF',  '400': '#00FBFB',  '500': '#00D2D2',  '600': '#009A9A',  '700': '#006262',  '800': '#002A2A',  '900': '#000000'},
+              },
+              fontFamily: {
+                Orbitron: ['Orbitron'],
+               },
+            }
+          }
+        }
+    </script>
+    <script src="https://cdn.blobity.dev/by.js?noAutoStart"></script>
+    <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+    <script>(function(w,d, s, id) {if(typeof(w.webpushr)!=='undefined') return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js, fjs = d.getElementsByTagName(s)[0];js = d.createElement(s); js.id = id;js.async=1;js.src = "https://cdn.webpushr.com/app.min.js";
+      fjs.parentNode.appendChild(js);}(window,document, 'script', 'webpushr-jssdk'));
+      webpushr('setup',{'key':'BJvMls1gek7FgZBIGp6S6PJ1OWWQiZPc8kq9eH8wSm7ugg_mv8sseegcsAE0iUgImqmW4_RvZrI9sT-mPx5mRpU', 'integration':'popup'  });</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ffop2tw9n7");
+  </script>   
+    <style>
+      header{
+          -webkit-box-shadow: 0px 20px 20px #e8f8026a;
+          -moz-box-shadow:    0px 20px 20px #e8f8026a;
+          box-shadow:         0px 20px 20px #e8f8026a;}
+      body {
+          background-image: url('{% static 'bg.svg' %}');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+          }
+      .install {
+        display: none;
+      }
+      @media all and (display-mode: standalone) {
+        .install{
+          display: none;
+        }
+      }
+      #custom_toast{
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.5s;
+        position: fixed;
+        bottom: -999px;
+        left: 25%;
+      }
+      #custom_toast.show{
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.5s;
+        bottom: 10px;
+      }
+      .promptPopup-show{
+        background-color: rgba(0,41,41,1);
+        border: 1px solid #00D2D2;
+      }
+      .webpushrOnBtn,.webpushrUnknownBtn{
+        color: #00D2D2;
+      }
+      #webpushrUnknownBtn{
+        color: #002A2A;
+      }
+      popup_poweredby{
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+      #webpushrOnBtn{
+        background-color: #b02323;
+      }
+      .webpushr-notification:hover{
+        background-color: #00d2d2;
+        color: #002a2a;
+      }
+      popup_heading.popup-button-heading{
+        border-top: 1px solid #00d2d2;
+      }
+      webpushrwppromptbox2_wrapper{
+        border-width:2px;
+        border-color:#00d2d2;
+      }
+      #webpushr-subscription-button{
+        display: block;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        color: #00d2d2;
+        background-color: transparent;
+      }
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: #002a2a;
+      }
+      ::-webkit-scrollbar-thumb {
+        width: 5px;
+        background-color: #008787;
+        border-radius: 20px;
+        border: 6px solid transparent;
+        background-clip: content-box;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #00d2d2;
+      }      
+    </style>
+    {% block head %}{% endblock head %}
+</head>
+<body class="font-Orbitron">
+    {% if user.is_authenticated %}
+    {% include 'auth_header.html' %}
+{% else %}
+    {% include 'no_auth_header.html' %}
+{% endif %}
+    <center>{% block content %}{% endblock content %} 
+
+  <div id="custom_toast" class="fixed bottom-0 left-1/4 p-4 mb-4 text-sm rounded-lg bg-nblue-800 text-nblue border border-nblue  w-1/2">
+  </div>
+  
+  </center> 
+    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+<script>
+  function showToast(message,time) {
+    let toast = document.getElementById('custom_toast');
+    toast.innerHTML = message;
+    toast.classList.add('show');
+    
+    setTimeout(function () {
+        toast.classList.remove('show');
+    }, time);
+}
+
+  let userAgent = navigator.userAgent;
+  if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1){
+    showToast('Please use a chromium based browser or Firefox. You may experience some issues while using safari.',5000)
+   }
+  </script>
+  {% if user.is_authenticated %}
+  <script>
+    let deferredPrompt;
+    const addBtn = document.getElementById('installapp');
+    addBtn.classList.add("hidden")
+    window.addEventListener('beforeinstallprompt', function(e) {
+        deferredPrompt = e;
+        addBtn.classList.remove("hidden")
+    });
+
+    addBtn.addEventListener('click', async () => {
+        console.log(deferredPrompt)
+        if (deferredPrompt !== undefined) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                showToast('Installing Crptex',2000)
+                deferredPrompt = undefined;
+            }
+            else {
+                showToast('Installation cancelled ',2000)
+                deferredPrompt = undefined;
+            }
+        } else {
+          showToast('Cryptex App may be already installed or could not be installed. Please try again later or contact the admin',2500)
+        }
+    });
+{% endif %}
+
+</script>
+{% block scripts %}{% endblock scripts %}
+<script>
+  const options = { color: 'rgb(0, 210, 210)',zIndex: '-1' };
+  new Blobity(options);
+</script>
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="bd398416-af5e-48cb-866f-5428c1f7f56e";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+{% if user.is_authenticated %}
+<script type="text/javascript">
+  $crisp.push(["set", "user:nickname", ["{{user.username}}"]])
+  $crisp.push(["set", "user:email", ["{{user.email}}"]])
+</script>
+{% endif %}
+</body>
+</html>

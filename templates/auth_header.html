@@ -1,0 +1,64 @@
+{% load static %}
+{% load profile_tags %}
+<header class="sticky top-0 text-gray-400 bg-nblue-800 body-font z-10">
+  <div
+    class="container mx-auto flex flex-wrap p-5 mt-0 mb-0 flex-col md:flex-row items-center"
+  >
+    <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+      <a href="{% url 'play' %}" class="mr-5 {% if url_name == 'play' %}text-nblue-100{% else %}text-nblue{% endif %} hover:text-nblue-200">Play</a>
+      <a href="{% url 'leaderboard' %}" class="mr-5  {% if url_name == 'leaderboard' %}text-nblue-100{% else %}text-nblue{% endif %} hover:text-nblue-200">Leaderboard</a>
+      <a href="{% url 'rules' %}" class="mr-5 {% if url_name == 'rules' %}text-nblue-100{% else %}text-nblue{% endif %} hover:text-nblue-200">Rules</a>
+      <a href="{% url 'about' %}" class="{% if url_name == 'about' %}text-nblue-100{% else %}text-nblue{% endif %} hover:text-nblue-200">About</a>
+    </nav>
+    <a href="/" class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-white lg:items-center lg:justify-center mb-4 md:mb-0">
+      <img src="{% static 'logo_banner.svg' %}" class="h-20 -m-2">
+    </a>
+    <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+      <div class="flex justify-center  content-center items-center">
+
+
+            <div class="flex group relative z-1  content-center items-center">
+              <span class="text-nblue mr-3  content-center items-center">{{user.username}}</span>
+                <button class="text-nblue"> <img src="{% avatar user %}" alt="avatar" class="w-11 h-11 rounded-full mr-3 border border-2 border-nblue-500 lg:-mt-5 lg:-mb-5"></button>
+                
+                <nav tabindex="0" class="border border-2 bg-nblue-800 invisible border-nblue-400 rounded w-60 absolute right-0 top-full transition-all opacity-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-1" style="z-index: 5" id="drop">
+                    <ul class="py-1">
+                      {% if user.is_staff %}
+                      <li>
+                          <a href="/honeypot/" class="block px-4 py-2 text-nblue hover:bg-nblue-500 hover:text-black">
+                              <center>Admin Panel</center>
+                          </a>
+                      </li>
+                      {% endif %}
+                        <li>
+                            <a href="{% url 'profile' %}" class="block px-4 py-2 text-nblue hover:bg-nblue-500 hover:text-black">
+                                <center>Profile</center>
+                            </a>
+                        </li>
+                        <li>
+                              <form action="{% url 'account_logout' %}" method="POST">
+                                {% csrf_token %}
+                              <button type="submit" class="block px-4 py-2 text-nblue hover:bg-nblue-500 hover:text-black w-full ">Sign Out</button>
+                              </form>
+                        </li>
+                        <li>
+                          <div id='install'>
+                            <button type="submit" id="installapp" class="block px-4 py-2 text-nblue hover:bg-nblue-500 hover:text-black w-full ">Install App</button>
+                          </div>
+                      </li>
+                      {% if user.is_superuser %}
+                      <li>
+                        <a href="{% url 'update_rank' %}" class="block px-4 py-2 text-nblue hover:bg-nblue-500 hover:text-black w-full">
+                          <center>Update Ranks</center>
+                      </a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

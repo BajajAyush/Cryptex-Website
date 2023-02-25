@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}About{% endblock %}
+{% block head %}
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+{% endblock %}
+{% block content %}
+<div class="justify-center">
+    <div class="rounded lg:w-1/3 md:w-1/2 w-[98%] p-5 mt-16 bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 bg-color-nblue-700 border border-nblue mb-10" style="background-color: rgba(0, 42, 42, .6);"><i><p tabindex="0" class="text-nblue focus:outline-none text-2xl font-extrabold leading-6">
+        <span class="text-2xl">About</span>
+    </div>
+
+<div class="container mx-0 flex flex-wrap items-center content-start">
+    <div class="lg:w-5/5 flex flex-col md:ml-auto w-full">
+    <div class="bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 bg-color-nblue-700 border border-nblue rounded-lg p-8 text-nblue m-2" style="background-color: rgba(0, 42, 42, .6);">
+        <p>Welcome to Cryptex, the flagship event of Quizzinga: The Quiz Club of LNMIIT. Cryptex is an online quiz that will challenge your knowledge, problem-solving skills, and how good you can Google. So, get ready to flex your brain muscles and embark on a journey filled with riddles and questions from all genres imaginable.
+            <br>
+            Website by BAJAJ
+            <br>
+            <button class="mt-5 bg-nblue-800 hover:bg-nblue-500 hover:text-black border border-nblue hover:border-black text-nblue font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="window.location.href={% url 'rules' %}">
+              Rules
+            </button>     
+            <button class="mt-5 bg-nblue-800 hover:bg-nblue-500 hover:text-black border border-nblue hover:border-black text-nblue font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="window.location.href={% url 'faqs' %}">
+              FAQs
+            </button>
+            <button class="mt-5 bg-nblue-800 hover:bg-nblue-500 hover:text-black border border-nblue hover:border-black text-nblue font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="window.location.href={% url 'guidelines' %}">
+              Guidelines
+            </button>
+            <br>
+            <p class="text-nblue text-xs"><a href="/terms-and-conditions/"><u>Terms of Service</u></a> and <a href = "/privacy-policy/"><u>Privacy Policy</u></a></p>
+        </p>
+        <hr class="border border-nblue my-5">
+        <a href="mailto:admin@cryptexlnm.xyz">
+          <i class='bx bxs-envelope text-4xl'></i>
+        </a>
+        <a href="https://www.instagram.com/quizzingalnm/">
+          <i class='bx bxl-instagram text-4xl' ></i>
+        </a>
+        <a href="https://www.youtube.com/@plinth.lnmiit">
+          <i class='bx bxl-youtube text-4xl' ></i>
+        </a>
+      </div>
+    <div data-aos="zoom-in-up" class="w-[98%] rounded p-5 mt-11 ml-3 text-nblue bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 bg-color-nblue-700 border border-nblue mb-10" style="background-color: rgba(0, 42, 42, .6);"><i>
+      <p tabindex="0" class="text-nblue focus:outline-none text-2xl font-extrabold leading-6">
+        <span class="text-5xl">Prizes</span></i>
+        <table class="table-auto text-2xl border-collapse border border-nblue mt-5">
+          <thead>
+            <tr>
+              <th class="border border-nblue p-5">Rank</th>
+              <th class="border border-nblue p-5">Prizes worth</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-nblue p-5"><b>1st</b></td>
+              <td class="border border-nblue p-5">
+                <ul class="list-disc list-inside text-lg">
+                <li>₹ 7,000</li>
+                <li>Certificate of appreciation</li>
+                </ul>
+              </td>
+            </tr>          
+            <tr>
+              <td class="border border-nblue p-5">2nd</td>
+              <td class="border border-nblue p-5">
+                <ul class="list-disc list-inside text-lg">
+                <li>₹ 3,000</li>
+                <li>Certificate of appreciation</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-nblue p-5">Everyone</td>
+              <td class="border border-nblue p-5">
+                <ul class="list-disc list-inside text-lg">
+                <li>Certificate of participation</li>
+                </ul>
+              </td>
+            </tr>
+  
+          </tbody>
+        </table>
+      </div>
+    
+    <div data-aos="zoom-in-up" class="w-[98%] rounded p-5 mt-11 ml-3 text-nblue bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 bg-color-nblue-700 border border-nblue mb-10" style="background-color: rgba(0, 42, 42, .6);"><i>
+      <p tabindex="0" class="text-nblue focus:outline-none text-2xl font-extrabold leading-6">
+      <span class="text-5xl">Sponsors</span></i>
+      <div class="flex place-content-center">
+        <a href="https://www.instagram.com/quizzingalnm/">
+          <img src="/logo.png" alt="quizzinga" class="max-h-20 mx-3">
+        </a>
+        <a href="https://plinth.co.in/">
+          <img src="/sponsors/Asset 4.png" alt="taskade" class="max-h-20 mx-3">
+        </a>
+      </div>
+    </div>     
+
+
+    </div>
+
+
+  </div></div>
+{% endblock content %}
+{% block scripts %}
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="text/javascript">
+  AOS.init();
+</script>
+{% endblock %}
